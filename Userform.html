@@ -1,0 +1,176 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>User Details</title>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round|Open+Sans">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="bootstrap\css\bootstrap.css" type="text/css">
+        <link rel="stylesheet" href="bootstrap\css\bootstrap-responsive.css" type="text/css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+        <script type="text/javascript" src='https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.3.min.js'></script>
+<script type="text/javascript" src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.3/js/bootstrap.min.js'></script>
+<link rel="stylesheet" href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.3/css/bootstrap.min.css' />
+        <style>
+            body{
+                padding-top:15px;
+                background-color: darkslategray;
+            }
+            h2{
+                text-align:center;
+            }
+            #userform
+            {
+                border: 10px solid black;
+                background-color:lightblue;
+                width:30%;
+                display:none;
+            }
+            nav
+            {
+                padding-right:px;
+            }
+            #add{
+                border-radius:40px;
+            }
+            table tr,th {
+                border: 3px solid black;
+                border-color: black;
+
+            }
+            tr,td{
+                border: 2px solid black;
+                border-color: black;
+                border-top-color: lightblue;
+            }
+            #deleteModel
+            {
+                display:none;
+            }
+            input[type="text"]{
+                height:40px;
+            }
+           
+            #ta
+            {
+                border: 2px solid black;
+                border-radius: 10px;
+                margin-top: 15px;
+                background-color:lightblue;
+            }
+            .row{
+                padding-top:15px;
+            }
+            #MyPopup
+            {
+                display:none;
+                width:fit-content;
+                height:fit-content;
+                margin-left:25%;
+            }
+            #myModal
+            {
+                display:none;
+                width:fit-content;
+                height:fit-content;
+                margin-left:25%;
+            }
+
+        </style>  
+    </head>
+    <body>
+            <script  src="main.js "></script>
+        <div class="container">
+        <div class="container" id="ta">
+            <div id="table">
+                <div class="row"></div>
+                    <h3 class="col-sm-4" >User List</h3>
+                    <button id="add" class="pull-right btn btn-primary"> <span class="glyphicon">&#x2b;</span>Add New </button>
+                </div>
+            <table class="table" id="usertable">
+                <thead>
+                    <tr>
+                    <th style="text-align:center">Name</th>
+                    <th style="text-align:center">Email Address</th>
+                    <th style="text-align:center">Avatar</th>
+                    <th style="text-align:center">Actions</th>
+                </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+
+        <div class="container" id="pagination">
+        <nav id="page">
+            <ul class="pagination pull-right">
+                <li class="page-item">
+                  <a class="page-item" href="#" onclick="btnclick(pagepointer-1)" >Previous</a>
+                </li>
+
+                <li class="page-item"><a class="page-link" onclick="btnclick(1)" href="#">1</a></li>
+                <li class="page-item ">
+                  <a class="page-link" onclick="btnclick(2)" href="#">2 </a>
+                </li>
+                <li class="page-item"><a class="page-link" onclick="btnclick(3)" href="#">3</a></li>
+                <li class="page-item" id="asdf"><a class="page-link" onclick="btnclick(4)" href="#">4</a></li>
+                
+                <li class="page-item" id="lastt" >
+                  <a class="page-link" onclick="btnclick(pagepointer+1)" href="#">Next</a>
+                </li>
+              </ul>
+            </nav>
+        </div>
+       
+        <div id="MyPopup" class="modal fade container-fluid" role="dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">
+                            &times;</button>
+                        <h4 class="modal-title">
+                    User Detail
+                        </h4>
+                    </div>
+                    <div class="modal-body">
+                            <form action="#"  class=" model-content animate form"  onsubmit="myfunction()" name="uservalue">
+                                    <label>First Name :</label> <br>
+                                   <input class="input-xlarge" type="text" id="f" name="fname" placeholder="Firstname"><br>
+                                  <label>Last name :</label> <br>
+                                  <input class="input-xlarge" type="text" id="l" name="lname" placeholder="Lastname"><br>
+                                  <label>Email:</label><br>
+                                   <input class="input-xlarge" type="text" id="e" name="email" placeholder="Email"> <br>
+                                  </form>
+                    </div>
+                    <div class="modal-footer">
+                         <input type="submit" id="sub" class="btn btn-primary" name="submit">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">
+                            Close</button>
+                    </div>
+            </div>
+        </div>
+
+
+        <div class="modal fade container-fluid" id="myModal" role="dialog">
+            <div class="modal-dialog">
+            
+              <!-- Modal content-->
+              <div class="modal-content">
+                <div class="modal-header">
+                </div>
+                <div class="modal-body">
+                  <h2 style="text-align: left">Are you sure to delete </h2>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" id="delete" class="btn btn-primary" data-dismiss="modal">Delete</button>
+                  <button type="button" id="cancel"class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                </div>
+              </div>
+              
+            </div>
+          </div>
+   
+</div>
+    </body> 
+</html>
